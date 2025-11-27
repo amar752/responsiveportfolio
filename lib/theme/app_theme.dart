@@ -137,14 +137,9 @@ class AppTheme {
         backgroundColor: primaryColor,
         foregroundColor: Colors.white,
         padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         elevation: 0,
-        textStyle: GoogleFonts.inter(
-          fontSize: 16,
-          fontWeight: FontWeight.w600,
-        ),
+        textStyle: GoogleFonts.inter(fontSize: 16, fontWeight: FontWeight.w600),
       ),
     ),
 
@@ -153,13 +148,8 @@ class AppTheme {
         foregroundColor: primaryColor,
         padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
         side: const BorderSide(color: primaryColor, width: 2),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
-        textStyle: GoogleFonts.inter(
-          fontSize: 16,
-          fontWeight: FontWeight.w600,
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        textStyle: GoogleFonts.inter(fontSize: 16, fontWeight: FontWeight.w600),
       ),
     ),
 
@@ -183,10 +173,7 @@ class AppTheme {
       iconTheme: const IconThemeData(color: textPrimary),
     ),
 
-    iconTheme: const IconThemeData(
-      color: textPrimary,
-      size: 24,
-    ),
+    iconTheme: const IconThemeData(color: textPrimary, size: 24),
 
     dividerTheme: const DividerThemeData(
       color: Color(0xFF2A2A3E),
@@ -209,10 +196,7 @@ class AppTheme {
         borderRadius: BorderRadius.circular(12),
         borderSide: const BorderSide(color: primaryColor, width: 2),
       ),
-      hintStyle: GoogleFonts.inter(
-        color: textLight,
-        fontSize: 14,
-      ),
+      hintStyle: GoogleFonts.inter(color: textLight, fontSize: 14),
       contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
     ),
   );
@@ -315,14 +299,9 @@ class AppTheme {
         backgroundColor: primaryColor,
         foregroundColor: Colors.white,
         padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         elevation: 0,
-        textStyle: GoogleFonts.inter(
-          fontSize: 16,
-          fontWeight: FontWeight.w600,
-        ),
+        textStyle: GoogleFonts.inter(fontSize: 16, fontWeight: FontWeight.w600),
       ),
     ),
 
@@ -331,13 +310,8 @@ class AppTheme {
         foregroundColor: primaryColor,
         padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
         side: const BorderSide(color: primaryColor, width: 2),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
-        textStyle: GoogleFonts.inter(
-          fontSize: 16,
-          fontWeight: FontWeight.w600,
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        textStyle: GoogleFonts.inter(fontSize: 16, fontWeight: FontWeight.w600),
       ),
     ),
 
@@ -361,10 +335,7 @@ class AppTheme {
       iconTheme: const IconThemeData(color: Color(0xFF1A1A2E)),
     ),
 
-    iconTheme: const IconThemeData(
-      color: Color(0xFF1A1A2E),
-      size: 24,
-    ),
+    iconTheme: const IconThemeData(color: Color(0xFF1A1A2E), size: 24),
 
     dividerTheme: const DividerThemeData(
       color: Color(0xFFE1E4E8),

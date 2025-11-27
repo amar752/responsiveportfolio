@@ -105,103 +105,29 @@ class _SkillCategory extends StatelessWidget {
   }
 }
 
-class _SkillBar extends StatefulWidget {
+class _SkillBar extends StatelessWidget {
   final Skill skill;
 
   const _SkillBar({required this.skill});
 
   @override
-  State<_SkillBar> createState() => _SkillBarState();
-}
-
-class _SkillBarState extends State<_SkillBar>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation<double> _animation;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(
-      duration: const Duration(milliseconds: 1500),
-      vsync: this,
-    );
-    _animation = Tween<double>(
-      begin: 0.0,
-      end: widget.skill.proficiency,
-    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOutCubic));
-
-    // Start animation after a short delay
-    Future.delayed(const Duration(milliseconds: 200), () {
-      if (mounted) {
-        _controller.forward();
-      }
-    });
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              widget.skill.name,
-              style: Theme.of(context).textTheme.titleMedium,
-            ),
-            AnimatedBuilder(
-              animation: _animation,
-              builder: (context, child) {
-                return Text(
-                  '${(_animation.value * 100).toInt()}%',
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: AppTheme.primaryColor,
-                    fontWeight: FontWeight.bold,
-                  ),
-                );
-              },
-            ),
-          ],
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      decoration: BoxDecoration(
+        color: AppTheme.surfaceColor,
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(
+          color: AppTheme.primaryColor.withOpacity(0.2),
+          width: 1,
         ),
-        const SizedBox(height: 8),
-        Container(
-          height: 8,
-          decoration: BoxDecoration(
-            color: AppTheme.surfaceColor,
-            borderRadius: BorderRadius.circular(4),
-          ),
-          child: AnimatedBuilder(
-            animation: _animation,
-            builder: (context, child) {
-              return FractionallySizedBox(
-                alignment: Alignment.centerLeft,
-                widthFactor: _animation.value,
-                child: Container(
-                  decoration: BoxDecoration(
-                    gradient: AppTheme.primaryGradient,
-                    borderRadius: BorderRadius.circular(4),
-                    boxShadow: [
-                      BoxShadow(
-                        color: AppTheme.primaryColor.withOpacity(0.3),
-                        blurRadius: 8,
-                        spreadRadius: 1,
-                      ),
-                    ],
-                  ),
-                ),
-              );
-            },
-          ),
-        ),
-      ],
+      ),
+      child: Text(
+        skill.name,
+        style: Theme.of(
+          context,
+        ).textTheme.titleMedium?.copyWith(color: AppTheme.textPrimary),
+      ),
     );
   }
 }

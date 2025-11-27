@@ -52,7 +52,8 @@ open-source projects.
       description:
           'Responsive portfolio website showcasing projects and skills. Built with Flutter Web and custom animations.',
       technologies: ['Flutter Web', 'Dart', 'Responsive Design'],
-      githubUrl: 'https://github.com/amar752', // Linking to profile as placeholder or repo if exists
+      githubUrl: 'https://github.com/amar752/responsiveportfolio',
+      liveUrl: 'https://amar752.github.io/responsiveportfolio/',
       isFeatured: true,
     ),
   ];

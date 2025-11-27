@@ -47,7 +47,8 @@ class _ContactSectionState extends State<ContactSection> {
         'Message:\n$message',
       );
 
-      final mailtoUrl = 'mailto:${PortfolioData.profile.email}'
+      final mailtoUrl =
+          'mailto:${PortfolioData.profile.email}'
           '?subject=$subject'
           '&body=$body';
 
