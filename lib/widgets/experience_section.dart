@@ -59,6 +59,7 @@ class ExperienceSection extends StatelessWidget {
               gradient: LinearGradient(
                 colors: [
                   AppTheme.primaryColor,
+                  // ignore: deprecated_member_use
                   AppTheme.primaryColor.withOpacity(0),
                 ],
               ),
