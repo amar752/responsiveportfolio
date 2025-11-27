@@ -210,13 +210,7 @@ class HeroSection extends StatelessWidget {
           image: const DecorationImage(
             image: AssetImage('assets/images/profile.jpg'),
             fit: BoxFit.cover,
-            onError: null,
           ),
-        ),
-        child: const Icon(
-          Icons.person,
-          size: 100,
-          color: AppTheme.textSecondary,
         ),
       ),
     );
