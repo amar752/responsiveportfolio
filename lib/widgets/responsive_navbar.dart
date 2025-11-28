@@ -34,7 +34,7 @@ class _ResponsiveNavbarState extends State<ResponsiveNavbar> {
       ),
       decoration: BoxDecoration(
         color: _isScrolled
-            ? Theme.of(context).scaffoldBackgroundColor.withOpacity(0.98)
+            ? Theme.of(context).scaffoldBackgroundColor.withOpacity(0.95)
             : Colors.transparent,
         boxShadow: _isScrolled
             ? [
