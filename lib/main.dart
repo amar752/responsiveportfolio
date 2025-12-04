@@ -372,10 +372,10 @@ class _HomePageState extends State<HomePage> {
               ? Column(
                   children: [
                     _buildProjectCard(
-                      'Telegram Clone',
-                      'A fully functional messaging application built with Flutter, featuring real-time chat, '
-                      'user authentication, and a clean Material Design interface.',
-                      ['Flutter', 'Firebase', 'Real-time DB'],
+                      'Telegram Clone (Frontend)',
+                      'A pixel-perfect UI clone of Telegram messaging app built with Flutter, featuring '
+                      'beautiful Material Design interface, chat screens, and local data persistence using SharedPreferences.',
+                      ['Flutter', 'SharedPreferences', 'UI/UX'],
                     ),
                     const SizedBox(height: 24),
                     _buildProjectCard(
@@ -391,10 +391,10 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     Expanded(
                       child: _buildProjectCard(
-                        'Telegram Clone',
-                        'A fully functional messaging application built with Flutter, featuring real-time chat, '
-                        'user authentication, and a clean Material Design interface.',
-                        ['Flutter', 'Firebase', 'Real-time DB'],
+                        'Telegram Clone (Frontend)',
+                        'A pixel-perfect UI clone of Telegram messaging app built with Flutter, featuring '
+                        'beautiful Material Design interface, chat screens, and local data persistence using SharedPreferences.',
+                        ['Flutter', 'SharedPreferences', 'UI/UX'],
                       ),
                     ),
                     const SizedBox(width: 24),
