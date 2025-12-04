@@ -56,9 +56,9 @@ class _ResponsiveNavbarState extends State<ResponsiveNavbar> {
             child: Text(
               'Portfolio',
               style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
             ),
           ),
 
@@ -194,11 +194,12 @@ class _NavItemState extends State<_NavItem> {
               Text(
                 widget.label,
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  color: _isHovered
-                      ? AppTheme.primaryColor
-                      : AppTheme.textPrimary,
-                  fontWeight: _isHovered ? FontWeight.w600 : FontWeight.normal,
-                ),
+                      color: _isHovered
+                          ? AppTheme.primaryColor
+                          : AppTheme.textPrimary,
+                      fontWeight:
+                          _isHovered ? FontWeight.w600 : FontWeight.normal,
+                    ),
               ),
               const SizedBox(height: 4),
               AnimatedContainer(

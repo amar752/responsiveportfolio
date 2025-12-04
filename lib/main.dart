@@ -280,7 +280,7 @@ class _HomePageState extends State<HomePage> {
             'Luminar',
             'Present',
             'Working on mobile app development using Flutter framework. '
-            'Developed multiple real-world applications and collaborated with the team on various projects.',
+                'Developed multiple real-world applications and collaborated with the team on various projects.',
           ),
         ],
       ),
@@ -326,7 +326,8 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 decoration: BoxDecoration(
                   color: AppTheme.primaryColor.withOpacity(0.2),
                   borderRadius: BorderRadius.circular(20),
@@ -374,7 +375,7 @@ class _HomePageState extends State<HomePage> {
                     _buildProjectCard(
                       'Telegram Clone (Frontend)',
                       'A pixel-perfect UI clone of Telegram messaging app built with Flutter, featuring '
-                      'beautiful Material Design interface, chat screens, and local data persistence using SharedPreferences.',
+                          'beautiful Material Design interface, chat screens, and local data persistence using SharedPreferences.',
                       ['Flutter', 'SharedPreferences', 'UI/UX'],
                       githubUrl: 'https://github.com/amar752/telegram_clone',
                     ),
@@ -382,7 +383,7 @@ class _HomePageState extends State<HomePage> {
                     _buildProjectCard(
                       'Expense Tracker',
                       'Comprehensive personal finance management app with SQLite database that helps users track income and expenses, '
-                      'categorize transactions, visualize spending patterns with charts, and manage budgets effectively.',
+                          'categorize transactions, visualize spending patterns with charts, and manage budgets effectively.',
                       ['Flutter', 'SQLite', 'Charts', 'Data Persistence'],
                       githubUrl: 'https://github.com/amar752/expensetracker2',
                     ),
@@ -395,7 +396,7 @@ class _HomePageState extends State<HomePage> {
                       child: _buildProjectCard(
                         'Telegram Clone (Frontend)',
                         'A pixel-perfect UI clone of Telegram messaging app built with Flutter, featuring '
-                        'beautiful Material Design interface, chat screens, and local data persistence using SharedPreferences.',
+                            'beautiful Material Design interface, chat screens, and local data persistence using SharedPreferences.',
                         ['Flutter', 'SharedPreferences', 'UI/UX'],
                         githubUrl: 'https://github.com/amar752/telegram_clone',
                       ),
@@ -405,7 +406,7 @@ class _HomePageState extends State<HomePage> {
                       child: _buildProjectCard(
                         'Expense Tracker',
                         'Comprehensive personal finance management app with SQLite database that helps users track income and expenses, '
-                        'categorize transactions, visualize spending patterns with charts, and manage budgets effectively.',
+                            'categorize transactions, visualize spending patterns with charts, and manage budgets effectively.',
                         ['Flutter', 'SQLite', 'Charts', 'Data Persistence'],
                         githubUrl: 'https://github.com/amar752/expensetracker2',
                       ),
@@ -594,8 +595,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget _buildSectionTitle(String title) {
     return ShaderMask(
-      shaderCallback: (bounds) =>
-          AppTheme.primaryGradient.createShader(bounds),
+      shaderCallback: (bounds) => AppTheme.primaryGradient.createShader(bounds),
       child: Text(
         title,
         style: Theme.of(context).textTheme.displaySmall?.copyWith(
