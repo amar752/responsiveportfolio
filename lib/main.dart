@@ -158,21 +158,32 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildSocialIcon(IconData icon, String url) {
-    return InkWell(
-      onTap: () => launchUrl(
-        Uri.parse(url),
-        mode: LaunchMode.externalApplication,
-      ),
-      child: Container(
-        padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          border: Border.all(color: AppTheme.primaryColor, width: 2),
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: InkWell(
+        onTap: () => launchUrl(
+          Uri.parse(url),
+          mode: LaunchMode.externalApplication,
         ),
-        child: FaIcon(
-          icon,
-          color: AppTheme.primaryColor,
-          size: 24,
+        borderRadius: BorderRadius.circular(30),
+        child: Container(
+          padding: const EdgeInsets.all(18),
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            gradient: AppTheme.primaryGradient,
+            boxShadow: [
+              BoxShadow(
+                color: AppTheme.primaryColor.withOpacity(0.4),
+                blurRadius: 15,
+                spreadRadius: 2,
+              ),
+            ],
+          ),
+          child: FaIcon(
+            icon,
+            color: Colors.white,
+            size: 26,
+          ),
         ),
       ),
     );
@@ -473,11 +484,33 @@ class _HomePageState extends State<HomePage> {
     String? githubUrl,
   }) {
     final cardContent = Container(
-      padding: const EdgeInsets.all(32),
+      padding: const EdgeInsets.all(36),
       decoration: BoxDecoration(
-        color: AppTheme.surfaceColor.withOpacity(0.5),
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: AppTheme.primaryColor.withOpacity(0.3)),
+        gradient: LinearGradient(
+          colors: [
+            AppTheme.surfaceColor.withOpacity(0.8),
+            AppTheme.cardColor.withOpacity(0.6),
+          ],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+        borderRadius: AppTheme.largeRadius,
+        border: Border.all(
+          color: AppTheme.primaryColor.withOpacity(0.3),
+          width: 1.5,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.2),
+            blurRadius: 20,
+            offset: const Offset(0, 10),
+          ),
+          BoxShadow(
+            color: AppTheme.primaryColor.withOpacity(0.1),
+            blurRadius: 30,
+            spreadRadius: -5,
+          ),
+        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -486,45 +519,68 @@ class _HomePageState extends State<HomePage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Expanded(
-                child: Text(
-                  title,
-                  style: Theme.of(context).textTheme.headlineSmall,
+                child: ShaderMask(
+                  shaderCallback: (bounds) =>
+                      AppTheme.primaryGradient.createShader(bounds),
+                  child: Text(
+                    title,
+                    style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                  ),
                 ),
               ),
               if (githubUrl != null)
-                FaIcon(
-                  FontAwesomeIcons.github,
-                  color: AppTheme.primaryColor,
-                  size: 24,
+                Container(
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: AppTheme.primaryColor.withOpacity(0.2),
+                  ),
+                  child: const FaIcon(
+                    FontAwesomeIcons.github,
+                    color: Colors.white,
+                    size: 22,
+                  ),
                 ),
             ],
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 20),
           Text(
             description,
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                   color: AppTheme.textSecondary,
-                  height: 1.6,
+                  height: 1.7,
                 ),
           ),
-          const SizedBox(height: 24),
+          const SizedBox(height: 28),
           Wrap(
-            spacing: 8,
-            runSpacing: 8,
+            spacing: 10,
+            runSpacing: 10,
             children: technologies
                 .map((tech) => Container(
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 12,
-                        vertical: 6,
+                        horizontal: 16,
+                        vertical: 8,
                       ),
                       decoration: BoxDecoration(
-                        color: AppTheme.primaryColor.withOpacity(0.2),
-                        borderRadius: BorderRadius.circular(12),
+                        gradient: LinearGradient(
+                          colors: [
+                            AppTheme.primaryColor.withOpacity(0.3),
+                            AppTheme.secondaryColor.withOpacity(0.2),
+                          ],
+                        ),
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(
+                          color: AppTheme.primaryColor.withOpacity(0.4),
+                        ),
                       ),
                       child: Text(
                         tech,
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                              color: AppTheme.primaryColor,
+                              color: AppTheme.secondaryColor,
+                              fontWeight: FontWeight.w600,
                             ),
                       ),
                     ))
@@ -535,13 +591,16 @@ class _HomePageState extends State<HomePage> {
     );
 
     if (githubUrl != null) {
-      return InkWell(
-        onTap: () => launchUrl(
-          Uri.parse(githubUrl),
-          mode: LaunchMode.externalApplication,
+      return MouseRegion(
+        cursor: SystemMouseCursors.click,
+        child: InkWell(
+          onTap: () => launchUrl(
+            Uri.parse(githubUrl),
+            mode: LaunchMode.externalApplication,
+          ),
+          borderRadius: AppTheme.largeRadius,
+          child: cardContent,
         ),
-        borderRadius: BorderRadius.circular(16),
-        child: cardContent,
       );
     }
 
@@ -601,7 +660,7 @@ class _HomePageState extends State<HomePage> {
           ),
           const SizedBox(height: 64),
           Text(
-            '© 2024 Amarchand NP. All rights reserved.',
+            '© 2025 Amarchand NP. All rights reserved.',
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
                   color: AppTheme.textSecondary,
                 ),
@@ -612,31 +671,44 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildContactLink(IconData icon, String label, String url) {
-    return InkWell(
-      onTap: () => launchUrl(
-        Uri.parse(url),
-        mode: LaunchMode.externalApplication,
-      ),
-      child: Column(
-        children: [
-          Container(
-            padding: const EdgeInsets.all(20),
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              gradient: AppTheme.primaryGradient,
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: InkWell(
+        onTap: () => launchUrl(
+          Uri.parse(url),
+          mode: LaunchMode.externalApplication,
+        ),
+        borderRadius: BorderRadius.circular(20),
+        child: Column(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(24),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                gradient: AppTheme.primaryGradient,
+                boxShadow: [
+                  BoxShadow(
+                    color: AppTheme.primaryColor.withOpacity(0.5),
+                    blurRadius: 20,
+                    spreadRadius: 3,
+                  ),
+                ],
+              ),
+              child: FaIcon(
+                icon,
+                color: Colors.white,
+                size: 30,
+              ),
             ),
-            child: FaIcon(
-              icon,
-              color: Colors.white,
-              size: 28,
+            const SizedBox(height: 16),
+            Text(
+              label,
+              style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.w600,
+                  ),
             ),
-          ),
-          const SizedBox(height: 12),
-          Text(
-            label,
-            style: Theme.of(context).textTheme.titleMedium,
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
