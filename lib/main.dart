@@ -383,6 +383,7 @@ class _HomePageState extends State<HomePage> {
                       'Comprehensive personal finance management app with SQLite database that helps users track income and expenses, '
                       'categorize transactions, visualize spending patterns with charts, and manage budgets effectively.',
                       ['Flutter', 'SQLite', 'Charts', 'Data Persistence'],
+                      githubUrl: 'https://github.com/amar752/expensetracker2',
                     ),
                   ],
                 )
@@ -404,6 +405,7 @@ class _HomePageState extends State<HomePage> {
                         'Comprehensive personal finance management app with SQLite database that helps users track income and expenses, '
                         'categorize transactions, visualize spending patterns with charts, and manage budgets effectively.',
                         ['Flutter', 'SQLite', 'Charts', 'Data Persistence'],
+                        githubUrl: 'https://github.com/amar752/expensetracker2',
                       ),
                     ),
                   ],
@@ -416,9 +418,10 @@ class _HomePageState extends State<HomePage> {
   Widget _buildProjectCard(
     String title,
     String description,
-    List<String> technologies,
-  ) {
-    return Container(
+    List<String> technologies, {
+    String? githubUrl,
+  }) {
+    final cardContent = Container(
       padding: const EdgeInsets.all(32),
       decoration: BoxDecoration(
         color: AppTheme.surfaceColor.withOpacity(0.5),
@@ -428,9 +431,22 @@ class _HomePageState extends State<HomePage> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            title,
-            style: Theme.of(context).textTheme.headlineSmall,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                child: Text(
+                  title,
+                  style: Theme.of(context).textTheme.headlineSmall,
+                ),
+              ),
+              if (githubUrl != null)
+                FaIcon(
+                  FontAwesomeIcons.github,
+                  color: AppTheme.primaryColor,
+                  size: 24,
+                ),
+            ],
           ),
           const SizedBox(height: 16),
           Text(
@@ -466,6 +482,19 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
     );
+
+    if (githubUrl != null) {
+      return InkWell(
+        onTap: () => launchUrl(
+          Uri.parse(githubUrl),
+          mode: LaunchMode.externalApplication,
+        ),
+        borderRadius: BorderRadius.circular(16),
+        child: cardContent,
+      );
+    }
+
+    return cardContent;
   }
 
   Widget _buildContactSection() {
