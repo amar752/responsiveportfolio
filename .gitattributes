@@ -1,0 +1,8 @@
+# Tell GitHub this is a Dart project
+*.dart linguist-language=Dart
+*.js linguist-generated=true
+*.html linguist-generated=true
+
+# Ignore build artifacts in language statistics
+build/** linguist-generated=true
+temp_web/** linguist-generated=true
