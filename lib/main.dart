@@ -32,6 +32,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final ScrollController _scrollController = ScrollController();
+  bool _showScrollToTop = false;
   final Map<String, GlobalKey> _sectionKeys = {
     'home': GlobalKey(),
     'about': GlobalKey(),
@@ -42,7 +43,22 @@ class _HomePageState extends State<HomePage> {
   };
 
   @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(_onScroll);
+  }
+
+  void _onScroll() {
+    if (_scrollController.offset > 300 && !_showScrollToTop) {
+      setState(() => _showScrollToTop = true);
+    } else if (_scrollController.offset <= 300 && _showScrollToTop) {
+      setState(() => _showScrollToTop = false);
+    }
+  }
+
+  @override
   void dispose() {
+    _scrollController.removeListener(_onScroll);
     _scrollController.dispose();
     super.dispose();
   }
@@ -52,10 +68,18 @@ class _HomePageState extends State<HomePage> {
     if (key?.currentContext != null) {
       Scrollable.ensureVisible(
         key!.currentContext!,
-        duration: const Duration(milliseconds: 500),
+        duration: const Duration(milliseconds: 800),
         curve: Curves.easeInOut,
       );
     }
+  }
+
+  void _scrollToTop() {
+    _scrollController.animateTo(
+      0,
+      duration: const Duration(milliseconds: 800),
+      curve: Curves.easeInOut,
+    );
   }
 
   @override
@@ -84,6 +108,19 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ],
+        ),
+      ),
+      floatingActionButton: AnimatedOpacity(
+        opacity: _showScrollToTop ? 1.0 : 0.0,
+        duration: const Duration(milliseconds: 300),
+        child: AnimatedSlide(
+          duration: const Duration(milliseconds: 300),
+          offset: _showScrollToTop ? Offset.zero : const Offset(0, 2),
+          child: FloatingActionButton(
+            onPressed: _scrollToTop,
+            backgroundColor: AppTheme.primaryColor,
+            child: const Icon(Icons.keyboard_arrow_up, size: 32),
+          ),
         ),
       ),
     );
@@ -151,7 +188,80 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
+            const SizedBox(height: 40),
+            Wrap(
+              spacing: 16,
+              runSpacing: 16,
+              alignment: WrapAlignment.center,
+              children: [
+                _buildActionButton(
+                  'View Projects',
+                  Icons.work_outline,
+                  () => _scrollToSection('projects'),
+                  isPrimary: true,
+                ),
+                _buildActionButton(
+                  'Contact Me',
+                  Icons.email_outlined,
+                  () => _scrollToSection('contact'),
+                  isPrimary: false,
+                ),
+              ],
+            ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildActionButton(
+    String label,
+    IconData icon,
+    VoidCallback onPressed, {
+    bool isPrimary = true,
+  }) {
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: InkWell(
+        onTap: onPressed,
+        borderRadius: BorderRadius.circular(30),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+          decoration: BoxDecoration(
+            gradient: isPrimary ? AppTheme.primaryGradient : null,
+            borderRadius: BorderRadius.circular(30),
+            border: isPrimary
+                ? null
+                : Border.all(color: AppTheme.primaryColor, width: 2),
+            boxShadow: isPrimary
+                ? [
+                    BoxShadow(
+                      color: AppTheme.primaryColor.withOpacity(0.4),
+                      blurRadius: 15,
+                      offset: const Offset(0, 5),
+                    ),
+                  ]
+                : null,
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(
+                icon,
+                color: isPrimary ? Colors.white : AppTheme.primaryColor,
+                size: 22,
+              ),
+              const SizedBox(width: 12),
+              Text(
+                label,
+                style: TextStyle(
+                  color: isPrimary ? Colors.white : AppTheme.primaryColor,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
