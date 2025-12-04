@@ -376,6 +376,7 @@ class _HomePageState extends State<HomePage> {
                       'A pixel-perfect UI clone of Telegram messaging app built with Flutter, featuring '
                       'beautiful Material Design interface, chat screens, and local data persistence using SharedPreferences.',
                       ['Flutter', 'SharedPreferences', 'UI/UX'],
+                      githubUrl: 'https://github.com/amar752/telegram_clone',
                     ),
                     const SizedBox(height: 24),
                     _buildProjectCard(
@@ -396,6 +397,7 @@ class _HomePageState extends State<HomePage> {
                         'A pixel-perfect UI clone of Telegram messaging app built with Flutter, featuring '
                         'beautiful Material Design interface, chat screens, and local data persistence using SharedPreferences.',
                         ['Flutter', 'SharedPreferences', 'UI/UX'],
+                        githubUrl: 'https://github.com/amar752/telegram_clone',
                       ),
                     ),
                     const SizedBox(width: 24),
