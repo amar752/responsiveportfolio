@@ -380,9 +380,9 @@ class _HomePageState extends State<HomePage> {
                     const SizedBox(height: 24),
                     _buildProjectCard(
                       'Expense Tracker',
-                      'Personal finance management app that helps users track their income and expenses, '
-                      'visualize spending patterns, and manage budgets effectively.',
-                      ['Flutter', 'Local Storage', 'Charts'],
+                      'Comprehensive personal finance management app with SQLite database that helps users track income and expenses, '
+                      'categorize transactions, visualize spending patterns with charts, and manage budgets effectively.',
+                      ['Flutter', 'SQLite', 'Charts', 'Data Persistence'],
                     ),
                   ],
                 )
@@ -401,9 +401,9 @@ class _HomePageState extends State<HomePage> {
                     Expanded(
                       child: _buildProjectCard(
                         'Expense Tracker',
-                        'Personal finance management app that helps users track their income and expenses, '
-                        'visualize spending patterns, and manage budgets effectively.',
-                        ['Flutter', 'Local Storage', 'Charts'],
+                        'Comprehensive personal finance management app with SQLite database that helps users track income and expenses, '
+                        'categorize transactions, visualize spending patterns with charts, and manage budgets effectively.',
+                        ['Flutter', 'SQLite', 'Charts', 'Data Persistence'],
                       ),
                     ),
                   ],
