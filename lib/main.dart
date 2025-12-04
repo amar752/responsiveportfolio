@@ -523,15 +523,26 @@ class _HomePageState extends State<HomePage> {
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 48),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+          Wrap(
+            alignment: WrapAlignment.center,
+            spacing: ResponsiveHelper.isMobile(context) ? 16 : 32,
+            runSpacing: 24,
             children: [
+              _buildContactLink(
+                FontAwesomeIcons.envelope,
+                'Email',
+                'mailto:amarchandnp2002@gmail.com',
+              ),
+              _buildContactLink(
+                FontAwesomeIcons.phone,
+                'Phone',
+                'tel:+919061491509',
+              ),
               _buildContactLink(
                 FontAwesomeIcons.github,
                 'GitHub',
                 'https://github.com/amar752',
               ),
-              const SizedBox(width: 32),
               _buildContactLink(
                 FontAwesomeIcons.linkedin,
                 'LinkedIn',
